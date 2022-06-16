@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private float distance;
-    
+    private float direction;
+    public GameObject player;
+    private Transform playertransform;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playertransform = player.GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -18,16 +22,38 @@ public class PlayerBehaviour : MonoBehaviour
     {
         
     }
-
-    public void OnMove(InputAction.CallbackContext obj)
+    public void OnMoveLeft(InputAction.CallbackContext obj)
     {
-        
+        if (obj.performed)
+        {
+            //return;
+            if (playertransform.position.x <= -4)
+            {
+                return;
+            }
+            Debug.Log(obj);
+            playertransform.position += new Vector3(-4, 0, 0);
+        }
+        Debug.Log(playertransform.position);
+
     }
-    
+    public void OnMoveRight(InputAction.CallbackContext obj)
+    {   if (obj.performed)
+        {
+
+            if (playertransform.position.x >= 4)
+            {
+                return;
+            }
+            Debug.Log(obj);
+            playertransform.position += new Vector3(4, 0, 0);
+        }
+        Debug.Log(playertransform.position);
+    }
+
     public void OnThrow(InputAction.CallbackContext obj)
     {
-        //== zonetype;
-
+        Debug.Log("rgshyyy");
     }
 
 
