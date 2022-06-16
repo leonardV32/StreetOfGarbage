@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    [SerializeField] private float distance;
-    private float direction;
     public GameObject player;
     private Transform playertransform;
 
